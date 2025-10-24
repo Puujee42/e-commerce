@@ -14,8 +14,8 @@ const formattedPrice = product.price.toFixed(2);
     <div class="info-header">
       <h3 class="product-name">{product.name}</h3>
       <div class="tags">
-        <span class="tag">// {product.gender}</span>
-        <span class="tag">// {product.type}</span>
+        <span class="tag"> {product.gender}</span>
+        <span class="tag"> {product.type}</span>
       </div>
     </div>
     <div class="info-footer">
@@ -51,7 +51,6 @@ const formattedPrice = product.price.toFixed(2);
   .image-container {
     position: relative;
     overflow: hidden;
-    background-color: var(--accent-primary); /* Red shows through blend mode */
   }
 
   .image-container img {
@@ -63,9 +62,10 @@ const formattedPrice = product.price.toFixed(2);
     filter: grayscale(100%) contrast(1.8);
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
-
   .opium-card:hover .image-container img {
     transform: scale(1.05);
+    filter:grayscale(0%) contrast(1);
+    mix-blend-mode:normal;
   }
   
   /* Pure CSS static that appears on hover */
