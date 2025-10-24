@@ -1,0 +1,108 @@
+---
+import faqData from '../data/faq.json';
+---
+
+  <div class="faq-page-wrapper">
+    <div class="faq-container container">
+      <h1 class="page-title">FREQUENT TRANSMISSIONS</h1>
+      <div class="faq-list">
+        {faqData.map(item => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>{item.question}</span>
+              <div class="faq-icon">†</div>
+            </summary>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+
+<style>
+  .faq-page-wrapper {
+    padding: 6rem 0;
+  }
+
+  /* ==> TITLE STYLING <== */
+  .page-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    color: var(--text-muted);
+  }
+
+  /* ==> ACCORDION LIST <== */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 800px; /* Constrain width for readability */
+    margin: 0 auto;
+  }
+
+  /* ==> INDIVIDUAL FAQ ITEM <== */
+  .faq-item {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+  }
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+
+  /* ==> INTERACTIVE QUESTION (SUMMARY) <== */
+  .faq-question {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-main);
+    padding: 1rem 0;
+    cursor: pointer;
+    list-style: none; /* Removes the default disclosure triangle */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s ease;
+  }
+  .faq-question::-webkit-details-marker {
+    display: none; /* Hides the triangle in Safari */
+  }
+  .faq-question:hover {
+    color: var(--accent-primary);
+  }
+
+  /* ==> CUSTOM ICON <== */
+  .faq-icon {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 900;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .faq-item[open] > .faq-question .faq-icon {
+    transform: rotate(45deg); /* Rotates the cross to an 'x' */
+  }
+
+  /* ==> ANSWER CONTAINER <== */
+  .faq-answer {
+    padding: 0 1rem 1rem 1rem;
+    color: var(--text-muted);
+    font-family: var(--font-main);
+    line-height: 1.7;
+    overflow: hidden;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

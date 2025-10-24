@@ -1,0 +1,164 @@
+---
+// src/components/ProductCard.astro
+const { product, accentType } = Astro.props;
+const formattedPrice = product.price.toFixed(2);
+const isUpcoming = product.status === 'upcoming';
+---
+
+<a href={isUpcoming ? '#' : `/product/${product.id}`} class="product-card" class:list={{"is-upcoming": isUpcoming}}>
+  <div class="product-image">
+    <img src={product.image} alt={product.name} loading="lazy" />
+
+    <!-- FIXED: Accent icons are now correctly rendered based on the accentType prop -->
+    {accentType === 'new' && <div class="accent-icon is-new">†</div>}
+    {accentType === 'trending' && <div class="accent-icon is-trending">††</div>}
+
+    <!-- Upcoming overlay remains the same -->
+    {isUpcoming && <div class="redacted-overlay">UPCOMING</div>}
+  </div>
+  <div class="product-info">
+    <h3 class="product-name">{product.name}</h3>
+    {isUpcoming ? (
+      <p class="product-status">TRANSMISSION PENDING</p>
+    ) : (
+      <p class="product-price">${formattedPrice}</p>
+    )}
+  </div>
+</a>
+
+<style>
+  /* ==> BASE STYLES (CLEAN) <== */
+  .product-card { 
+    display: block; 
+    text-decoration: none; 
+    color: var(--text-main); 
+    background-color: #050505; 
+    border: 1px solid var(--border-color); 
+    overflow: hidden; 
+    position: relative; 
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1); 
+  }
+  .product-card:hover { 
+    transform: translateY(-8px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); 
+  }
+  .product-image { 
+    position: relative; 
+    overflow: hidden; 
+  }
+  .product-image img { 
+    width: 100%; 
+    height: auto; 
+    aspect-ratio: 1 / 1.25; 
+    object-fit: cover; 
+    transition: filter 0.5s cubic-bezier(0.23, 1, 0.32, 1), transform 0.5s cubic-bezier(0.23, 1, 0.32, 1); 
+    filter: grayscale(100%); 
+  }
+  .product-card:hover .product-image img { 
+    filter: grayscale(0%); 
+    transform: scale(1.03); 
+  }
+  .product-info { 
+    padding: 1.5rem; 
+    text-align: center; 
+  }
+  .product-name { 
+    font-family: var(--font-mono); 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-size: 1rem; 
+    font-weight: 400; 
+    margin: 0 0 0.5rem 0; 
+    color: var(--text-muted); 
+    transition: color 0.4s ease; 
+  }
+  .product-card:hover .product-name { 
+    color: var(--color-white); 
+  }
+  .product-price { 
+    font-family: var(--font-display); 
+    font-size: 1.25rem; 
+    font-weight: bold; 
+    margin: 0; 
+    color: var(--color-white); 
+  }
+  
+  /* ==> FIXED: ACCENT ICON STYLING <== */
+  /* This replaces the old ::after pseudo-element entirely for a cleaner system */
+  .accent-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    font-family: var(--font-display);
+    color: var(--text-muted);
+    opacity: 0.5;
+    z-index: 3;
+    transition: color 0.4s ease, text-shadow 0.4s ease, opacity 0.4s ease;
+  }
+
+  .product-card:hover .accent-icon {
+    opacity: 1;
+    text-shadow: 0 0 10px var(--accent-primary);
+  }
+  
+  .product-card:hover .accent-icon.is-new {
+    color: var(--accent-primary);
+  }
+
+  .product-card:hover .accent-icon.is-trending {
+    color: var(--color-white);
+    text-shadow: 0 0 10px var(--accent-primary);
+  }
+
+  /* ==> UPCOMING PRODUCT STYLES (CLEAN & UNIQUE) <== */
+  .product-card.is-upcoming {
+    cursor: default;
+  }
+  .product-card.is-upcoming:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  }
+  .product-card.is-upcoming .product-image img {
+    filter: grayscale(100%) blur(8px);
+    transform: scale(1.1);
+  }
+  .product-card.is-upcoming:hover .product-image img {
+    filter: grayscale(100%) blur(0);
+    transform: scale(1.13);
+  }
+  .redacted-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+    background: rgba(0,0,0,0.5);
+    opacity: 1;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .product-card.is-upcoming:hover .redacted-overlay {
+    opacity: 0;
+  }
+  .product-card.is-upcoming .accent-icon {
+    display: none; /* FIXED: Explicitly hide accents on upcoming cards */
+  }
+  .product-status {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0;
+    color: var(--text-muted);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+</style>

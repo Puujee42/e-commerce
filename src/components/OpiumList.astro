@@ -1,0 +1,40 @@
+---
+// src/components/OpiumList.astro
+import allOpiumProducts from '../data/opium.json';
+import OpiumCard from './OpiumCard.astro'; // <-- Use the new card
+
+export interface Props {
+  filter?: 'unisex' | 'mens' | 'womens';
+  limit?: number;
+  title?: string;
+}
+
+const { filter, limit, title } = Astro.props;
+let products = allOpiumProducts;
+
+if (filter) {
+  products = products.filter(p => p.gender === filter);
+}
+
+if (limit) {
+  products = products.slice(0, limit);
+}
+---
+
+<section class="product-list-section container">
+  {title && <h2 class="section-title">{`// ${title} //`}</h2>}
+  <div class="opium-grid">
+    {products.map(product => (
+      <OpiumCard product={product} />
+    ))}
+  </div>
+</section>
+
+<style>
+  /* You can reuse the clean ProductList styles */
+  .product-list-section{padding:6rem 0;border-top:1px solid var(--border-color)}
+  .section-title{text-align:center;margin-bottom:4rem;font-family:var(--font-display);font-size:clamp(2rem,4vw,2.5rem);font-weight:700;font-style:italic;text-transform:uppercase;letter-spacing:10px;color:var(--text-muted);transition:color .3s ease}
+  .section-title:hover{color:var(--accent-primary)}
+  .opium-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2rem}
+  @media (max-width:768px){.opium-grid{grid-template-columns:1fr;gap:2rem}.product-list-section{padding:4rem 0}.section-title{letter-spacing:6px}}
+</style>

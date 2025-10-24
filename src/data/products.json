@@ -1,0 +1,134 @@
+[
+  {
+    "id": "opm-001",
+    "name": "Distressed 'VAMP' Hoodie",
+    "price": 180.00,
+    "category": "opium",
+    "image": "/hoodie1.jpg",
+    "description": "Heavyweight cotton hoodie with a distressed, washed-out finish. Features cryptic graphics and an oversized, batwing silhouette.",
+    "isNew": true,
+    "isTrending": true,
+    "tags": ["hoodie", "outerwear", "unisex", "distressed"]
+  },
+  {
+    "id": "opm-002",
+    "name": "Cargo Bondage Trousers",
+    "price": 250.00,
+    "category": "opium",
+    "image": "/trouser.webp",
+    "description": "Multi-pocket cargo pants in waxed canvas with detachable bondage straps. A staple of the antagonist uniform.",
+    "isNew": true,
+    "isTrending": true,
+    "tags": ["pants", "trousers", "unisex", "cargo"]
+  },
+  {
+    "id": "opm-003",
+    "name": "Anarchy Leather Jacket",
+    "price": 550.00,
+    "category": "opium",
+    "image": "/jacket.jpg",
+    "description": "Hand-distressed grain leather jacket with custom silver hardware and an asymmetrical zip. Built for the night.",
+    "isNew": false,
+    "isTrending": true,
+    "tags": ["jacket", "leather", "outerwear", "unisex"]
+  },
+  {
+    "id": "opm-004",
+    "name": "Monolith Combat Boots",
+    "price": 420.00,
+    "category": "opium",
+    "image": "/boots.jpg",
+    "description": "Exaggerated platform combat boots crafted from matte leather. Features a brutalist silhouette and a side-zip closure.",
+    "isNew": true,
+    "isTrending": true,
+    "tags": ["footwear", "boots", "leather", "unisex"]
+  },
+  {
+    "id": "opm-005",
+    "name": "Phantom Knit Balaclava",
+    "price": 95.00,
+    "category": "opium",
+    "image": "/hat.webp",
+    "description": "Distressed knit balaclava with a deconstructed weave. Full face coverage for maximum anonymity.",
+    "isNew": false,
+    "isTrending": true,
+    "tags": ["headwear", "mask", "unisex", "knit"]
+  },
+  {
+    "id": "acc-001",
+    "name": "Chrome Cross Pendant",
+    "price": 90.00,
+    "category": "accessories",
+    "image": "/cross.webp",
+    "description": "Solid sterling silver pendant with a brutalist, gothic design. Hangs from a heavy 24-inch chain.",
+    "isNew": true,
+    "isTrending": true,
+    "tags": ["necklace", "jewelry", "silver", "unisex"]
+  },
+  {
+    "id": "acc-002",
+    "name": "Spiked Leather Choker",
+    "price": 65.00,
+    "category": "accessories",
+    "image": "/choker.webp",
+    "description": "Genuine leather choker with polished steel spikes and an adjustable buckle closure. Raw and refined.",
+    "isNew": false,
+    "isTrending": true,
+    "tags": ["choker", "jewelry", "leather", "unisex"]
+  },
+  {
+    "id": "acc-003",
+    "name": "Silver Armor Ring Set",
+    "price": 110.00,
+    "category": "accessories",
+    "image": "/ring.jpg",
+    "description": "A set of three interlocking sterling silver rings designed to mimic gothic armor. Articulated for movement.",
+    "isNew": false,
+    "isTrending": true,
+    "tags": ["ring", "jewelry", "silver", "unisex"]
+  },
+  {
+    "id": "acc-004",
+    "name": "Barbed Wire Leather Belt",
+    "price": 125.00,
+    "category": "accessories",
+    "image": "/belt.jpg",
+    "description": "Thick leather belt featuring a custom-molded barbed wire-style buckle in tarnished silver.",
+    "isNew": true,
+    "isTrending": true,
+    "tags": ["belt", "leather", "unisex"]
+  },
+  {
+    "id": "prf-001",
+    "name": "Narcissist No. 00",
+    "price": 150.00,
+    "category": "perfumes",
+    "image": "/narcissist.jpg",
+    "description": "A dark, unisex fragrance with notes of leather, gasoline, and burnt vanilla. Unforgettable and unapologetic.",
+    "isNew": true,
+    "isTrending": true,
+    "tags": ["fragrance", "perfume", "unisex"]
+  },
+  {
+    "id": "prf-002",
+    "name": "Antagonist No. 01",
+    "price": 150.00,
+    "category": "perfumes",
+    "image": "/parfurm.webp",
+    "description": "A sharp, metallic scent with top notes of blood orange and cold steel, softened by a base of black musk.",
+    "isNew": false,
+    "isTrending": true,
+    "tags": ["fragrance", "perfume", "unisex"]
+  },
+  {
+    "id": "prf-003",
+    "name": "Cathedral No. 02",
+    "price": 165.00,
+    "category": "perfumes",
+    "image": "/cathedral.webp",
+    "description": "An atmospheric fragrance evoking cold stone, ancient incense, and oud. A scent for silent rooms and late nights.",
+    "isNew": false,
+    "isTrending": true,
+    "tags": ["fragrance", "perfume", "unisex"]
+  }
+]

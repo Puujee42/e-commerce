@@ -1,0 +1,154 @@
+/* ==> PLAYBOI CARTI THEMED GLOBAL STYLES <== */
+
+/* ------------------- */
+/* ==> ROOT VARIABLES <== */
+/* ------------------- */
+
+:root {
+  --font-main: 'Helvetica Neue', 'Arial', sans-serif;
+  --font-display: 'Times New Roman', 'Garamond', serif;
+  --font-mono: 'Courier New', monospace;
+
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-red: #ff0000;
+  --primary-red: #6e0b14;
+  --color-gray-dark: #1a1a1a;
+  --color-gray-light: #cccccc;
+
+  --text-main: var(--color-white);
+  --text-muted: var(--color-gray-light);
+  --bg-main: var(--color-black);
+  --accent-primary: var(--color-red);
+  --border-color: var(--color-gray-dark);
+}
+
+/* ------------------- */
+/* ==> BASE & RESET <== */
+/* ------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-main);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  font-size: 16px;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ------------------- */
+/* ==> TYPOGRAPHY <== */
+/* ------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--accent-primary);
+  text-shadow: 1px 1px 0 var(--color-black), -1px -1px 0 var(--color-black), 1px -1px 0 var(--color-black), -1px 1px 0 var(--color-black);
+}
+
+h1 {
+  font-size: 3rem;
+  font-style: italic;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--color-white);
+  text-decoration: underline;
+}
+
+
+/* ------------------- */
+/* ==> UTILITY CLASSES <== */
+/* ------------------- */
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.letter-spacing-lg {
+  letter-spacing: 4px;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.color-red {
+    color: var(--accent-primary);
+}

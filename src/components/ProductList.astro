@@ -1,0 +1,88 @@
+---
+// src/components/ProductList.astro
+import allProducts from '../data/products.json';
+import ProductCard from './ProductCard.astro';
+
+export interface Props {
+  // FIXED: Re-introduced the listType prop which is essential for filtering
+  listType: 'new' | 'trending' | 'category'; 
+  category?: string;
+  limit?: number;    
+  title?: string;
+}
+
+const { listType, category, limit, title } = Astro.props;
+let products;
+
+// --- FIXED: Robust filtering logic that handles all cases ---
+if (listType === 'new') {
+  products = allProducts.filter(p => p.isNew);
+} else if (listType === 'trending') {
+  products = allProducts.filter(p => p.isTrending);
+} else if (listType === 'category' && category) {
+  products = allProducts.filter(p => p.category === category);
+} else {
+  // Fallback to all products if no valid type is matched
+  products = allProducts;
+}
+
+if (limit) {
+  // The limit is applied after the primary filtering
+  products = products.slice(0, limit);
+}
+---
+
+<section class="product-list-section container">
+  {/* FIXED: Restored the consistent title styling */}
+  {title && <h2 class="section-title">{` ${title} `}</h2>}
+  <div class="product-grid">
+    {products.map(product => (
+      // FIXED: Correctly passes the accentType prop down to the ProductCard
+      <ProductCard product={product} accentType={listType === 'category' ? undefined : listType} />
+    ))}
+  </div>
+</section>
+
+<style>
+  /* ==> CLEAN & REFINED SECTION <== */
+  .product-list-section {
+    padding: 6rem 0;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  /* ==> ELEGANT & MINIMALIST TITLE <== */
+  .section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    color: var(--text-muted);
+    transition: color 0.3s ease; /* Added transition for the hover effect */
+  }
+  .section-title:hover {
+    color: var(--accent-primary);
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+  }
+
+  @media(max-width: 768px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .product-list-section {
+        padding: 4rem 0;
+    }
+    .section-title {
+      letter-spacing: 6px;
+    }
+  }
+</style>

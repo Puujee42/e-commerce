@@ -1,0 +1,79 @@
+[
+  {
+    "id": "opm-006",
+    "name": "Deconstructed Trench Coat",
+    "price": 750.00,
+    "category": "opium",
+    "image": "/coat.png",
+    "description": "An oversized, floor-length trench coat in washed black canvas. Features raw, unfinished hems, a fragmented back panel, and an integrated leather harness system.",
+    "isNew": false,
+    "status": "upcoming",
+    "tags": ["coat", "outerwear", "unisex", "harness"]
+  },
+  {
+    "id": "acc-005",
+    "name": "Wraparound Shield Sunglasses",
+    "price": 220.00,
+    "category": "accessories",
+    "image": "/glass.png",
+    "description": "Aggressive, futuristic shield sunglasses with a monolithic lens. Engraved with a cryptic serial number on the temple. Total light absorption.",
+    "isNew": false,
+    "status": "upcoming",
+    "tags": ["eyewear", "sunglasses", "unisex", "shield"]
+  },
+  {
+    "id": "opm-007",
+    "name": "Crucifix Hardware Loafers",
+    "price": 480.00,
+    "category": "opium",
+    "image": "/loafer.png",
+    "description": "Polished black leather loafers built on a heavy-duty lug sole. Adorned with a custom sterling silver crucifix across the vamp. The uniform for the new church.",
+    "isNew": false,
+    "status": "upcoming",
+    "tags": ["footwear", "shoes", "leather", "unisex"]
+  },
+  {
+    "id": "acc-006",
+    "name": "Studded Fingerless Gauntlets",
+    "price": 150.00,
+    "category": "accessories",
+    "image": "/gloves.png",
+    "description": "Soft grain leather fingerless gloves extending to the mid-forearm. Lined with polished steel studs and an adjustable wrist strap. Second skin for the concrete jungle.",
+    "isNew": false,
+    "status": "upcoming",
+    "tags": ["gloves", "leather", "unisex", "punk"]
+  },
+  {
+    "id": "prf-004",
+    "name": "Voidwood No. 03",
+    "price": 180.00,
+    "category": "perfumes",
+    "image": "/black.png",
+    "description": "A deeply unsettling fragrance. Top notes of petrichor and cold iron give way to a heart of smoked oud and a base of damp earth. The scent of a forgotten place.",
+    "isNew": false,
+    "status": "upcoming",
+    "tags": ["fragrance", "perfume", "unisex"]
+  },
+  {
+    "id": "opm-008",
+    "name": "Sigil Graphic Tee",
+    "price": 90.00,
+    "category": "opium",
+    "image": "/tee.png",
+    "description": "Heavyweight oversized tee in sun-faded black. Features a large, cracked-ink sigil graphic on the back with minimal branding on the chest. A uniform for the initiated.",
+    "isNew": false,
+    "status": "upcoming",
+    "tags": ["tee", "top", "unisex", "graphic"]
+  },
+  {
+    "id": "acc-007",
+    "name": "Single Dagger Drop Earring",
+    "price": 85.00,
+    "category": "accessories",
+    "image": "/ear.png",
+    "description": "A single, razor-sharp dagger earring cast in solid .925 sterling silver. Hangs from a small, secure hoop. Sold individually.",
+    "isNew": false,
+    "status": "upcoming",
+    "tags": ["earring", "jewelry", "silver", "unisex"]
+  }
+]

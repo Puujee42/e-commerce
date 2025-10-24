@@ -1,0 +1,185 @@
+---
+// src/components/OpiumCard.astro
+const { product } = Astro.props;
+const formattedPrice = product.price.toFixed(2);
+---
+
+<a href={`/product/${product.id}`} class="opium-card">
+  <div class="image-container">
+    <div class="static-overlay"></div>
+    <img src={product.image} alt={product.name} loading="lazy" />
+    <div class="scanner-bar"></div>
+  </div>
+  <div class="info-container">
+    <div class="info-header">
+      <h3 class="product-name">{product.name}</h3>
+      <div class="tags">
+        <span class="tag">// {product.gender}</span>
+        <span class="tag">// {product.type}</span>
+      </div>
+    </div>
+    <div class="info-footer">
+      <p class="product-price">${formattedPrice}</p>
+      <div class="cta-prompt">[ EXAMINE ]</div>
+    </div>
+  </div>
+</a>
+
+<style>
+  /* ==> FONT IMPORT (if not already global) <== */
+  @import url('https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap');
+
+  .opium-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--text-main);
+    background-color: var(--color-black);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.4s ease;
+    animation: constant-flicker 5s infinite;
+  }
+
+  .opium-card:hover {
+    border-color: var(--accent-primary);
+    animation: shake 0.5s linear infinite;
+  }
+
+  /* ==> DAMAGED VHS IMAGE <== */
+  .image-container {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--accent-primary); /* Red shows through blend mode */
+  }
+
+  .image-container img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1.1;
+    object-fit: cover;
+    mix-blend-mode: luminosity; /* Washes out color, creates stark look */
+    filter: grayscale(100%) contrast(1.8);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .opium-card:hover .image-container img {
+    transform: scale(1.05);
+  }
+  
+  /* Pure CSS static that appears on hover */
+  .static-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: repeating-linear-gradient(0deg, rgba(0,0,0,0.5) 1px, transparent 2px);
+    background-size: 100% 2px;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: static-anim 0.1s steps(1) infinite;
+  }
+  .opium-card:hover .static-overlay {
+    opacity: 0.3;
+  }
+
+  /* Redesigned scanner bar */
+  .scanner-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, transparent 0%, var(--accent-primary) 50%, transparent 100%);
+    mix-blend-mode: screen;
+    opacity: 0.5;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .opium-card:hover .scanner-bar {
+    transform: translateY(-100%);
+  }
+
+  /* ==> CRYPTIC INFO PANEL <== */
+  .info-container {
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    z-index: 5; /* Ensure info is above any image effects */
+    background-color: var(--color-black);
+  }
+
+  .product-name {
+    font-family: 'Rubik Wet Paint', cursive; /* ICONIC FONT */
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--text-main);
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .info-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 1rem;
+    margin-top: 1rem;
+  }
+
+  .product-price {
+    font-family: var(--font-mono); /* Switched to mono for a technical feel */
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+  }
+
+  .cta-prompt {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    position: relative; /* For the new hover effect */
+  }
+  
+  /* Thematic cross appears on hover */
+  .cta-prompt::before {
+    content: '†';
+    font-family: var(--font-display);
+    position: absolute;
+    left: -1em;
+    opacity: 0;
+    transition: opacity 0.3s ease, left 0.3s ease;
+  }
+
+  .opium-card:hover .cta-prompt {
+    color: var(--color-white);
+  }
+
+  .opium-card:hover .cta-prompt::before {
+    opacity: 1;
+    left: -1.5em; /* Pushes out from the text */
+  }
+  
+  /* ==> KEYFRAMES <== */
+  @keyframes shake { 0%, 100% {transform:translateX(0)} 25% {transform:translateX(-1px)} 75% {transform:translateX(1px)} }
+  @keyframes constant-flicker { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.05); } }
+  @keyframes static-anim { 0% {transform:translateY(0)} 100% {transform:translateY(10px)} }
+</style>
