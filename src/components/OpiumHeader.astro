@@ -1,0 +1,107 @@
+---
+// src/components/OpiumHeader.astro
+---
+<header class="opium-header">
+  <div class="header-content">
+    <h1 id="opium-title"></h1>
+    <p id="manifesto">// A COVENANT IN SHADOW & THREAD //</p>
+  </div>
+</header>
+
+<script>
+  const titleEl = document.getElementById('opium-title');
+  const manifestoEl = document.getElementById('manifesto');
+  const finalTitle = 'OPIUM';
+  
+  // A minimal set of glitchy/cryptic characters
+  const symbols = ['*', '†', '_', '[', ']', '|'];
+  let summoningInterval;
+
+  function startSummoning() {
+    let iteration = 0;
+    
+    summoningInterval = setInterval(() => {
+      titleEl.textContent = finalTitle.split('')
+        .map((letter, index) => {
+          if(index < iteration) {
+            return finalTitle[index];
+          }
+          return symbols[Math.floor(Math.random() * symbols.length)];
+        })
+        .join('');
+      
+      if(iteration >= finalTitle.length){
+        clearInterval(summoningInterval);
+        titleEl.classList.add('is-summoned');
+        manifestoEl.classList.add('is-revealed');
+      }
+      
+      iteration += 1 / 4; // Slower, more deliberate reveal
+    }, 100); // Slower flicker speed
+  }
+
+  setTimeout(startSummoning, 1200);
+</script>
+
+<style>
+  /* ==> MINIMALIST VOID <== */
+  .opium-header {
+    height: 60vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background-color: var(--color-black); /* Pure black background, no video */
+  }
+
+  .header-content {
+    position: relative;
+    z-index: 3;
+  }
+
+  /* The title during the "summoning" phase */
+  #opium-title {
+    font-family: var(--font-mono);
+    font-size: clamp(2rem, 10vw, 5rem);
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    /* No complex animations, just the text changing */
+  }
+
+  /* The title AFTER it has been "summoned" */
+  #opium-title.is-summoned {
+    font-family: var(--font-display); /* Changed to the clean serif font */
+    font-size: clamp(4rem, 15vw, 9rem);
+    font-style: italic;
+    color: var(--accent-primary);
+    text-shadow: 0 0 15px var(--accent-primary);
+    animation: final-glow 5s ease-in-out infinite;
+  }
+
+  /* The manifesto is a clean, static subtitle */
+  #manifesto {
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    opacity: 0;
+    transition: opacity 1.5s ease; /* Slower, more elegant fade-in */
+  }
+  #manifesto.is-revealed {
+    opacity: 0.6;
+  }
+
+  /* A single, subtle glow animation for the final state */
+  @keyframes final-glow {
+    0%, 100% {
+      text-shadow: 0 0 15px var(--accent-primary);
+      opacity: 0.9;
+    }
+    50% {
+      text-shadow: 0 0 25px var(--accent-primary);
+      opacity: 1;
+    }
+  }
+</style>

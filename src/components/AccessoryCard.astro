@@ -1,0 +1,149 @@
+---
+// src/components/AccessoryCard.astro
+const { product } = Astro.props;
+const formattedPrice = product.price.toFixed(2);
+---
+<a href={`/product/${product.id}`} class="accessory-card">
+  <div class="image-container">
+    <img src={product.image} alt={product.name} loading="lazy" />
+  </div>
+  <div class="info-panel">
+    <div class="info-main">
+      <h3 class="product-name">{product.name}</h3>
+      <dl class="spec-list">
+        <div class="spec-item">
+          <dt>ID:</dt>
+          <dd>{product.id}</dd>
+        </div>
+        <div class="spec-item">
+          <dt>TYPE:</dt>
+          <dd>{product.type}</dd>
+        </div>
+      </dl>
+    </div>
+    <div class="info-footer">
+      <p class="product-price">${formattedPrice}</p>
+      <div class="acquire-btn">[ ACQUIRE ]</div>
+    </div>
+  </div>
+</a>
+
+<style>
+  .accessory-card {
+    display: flex;
+    text-decoration: none;
+    color: var(--text-main);
+    background-color: #0a0a0a;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+  }
+  .accessory-card:hover {
+    background-color: #111;
+  }
+
+  /* ==> IMAGE PANEL <== */
+  .image-container {
+    flex-basis: 45%;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    border-right: 1px solid var(--border-color);
+  }
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), filter 0.4s ease;
+  }
+  .accessory-card:hover .image-container img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+  }
+  .image-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+  }
+
+
+  /* ==> INFO PANEL <== */
+  .info-panel {
+    flex-grow: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .product-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: var(--text-main);
+    margin: 0;
+  }
+
+  /* Technical spec sheet style */
+  .spec-list {
+    margin-top: 1.5rem;
+  }
+  .spec-item {
+    display: flex;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .spec-item dt { /* The label, e.g., "ID:" */
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+  .spec-item dd { /* The value, e.g., "acc-jwl-001" */
+    color: var(--text-main);
+  }
+  
+  .info-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .product-price {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .acquire-btn {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--color-black);
+    background-color: var(--text-main);
+    padding: 0.6rem 1.2rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .accessory-card:hover .acquire-btn {
+    background-color: var(--accent-primary);
+  }
+
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .accessory-card {
+      flex-direction: column;
+    }
+    .image-container {
+      border-right: none;
+      border-bottom: 1px solid var(--border-color);
+    }
+  }
+</style>

@@ -8,8 +8,6 @@ const isUpcoming = product.status === 'upcoming';
 <a href={isUpcoming ? '#' : `/product/${product.id}`} class="product-card" class:list={{"is-upcoming": isUpcoming}}>
   <div class="product-image">
     <img src={product.image} alt={product.name} loading="lazy" />
-
-    <!-- FIXED: Accent icons are now correctly rendered based on the accentType prop -->
     {accentType === 'new' && <div class="accent-icon is-new">†</div>}
     {accentType === 'trending' && <div class="accent-icon is-trending">††</div>}
 
@@ -50,6 +48,7 @@ const isUpcoming = product.status === 'upcoming';
     width: 100%; 
     height: auto; 
     aspect-ratio: 1 / 1.25; 
+    mix-blend-mode: luminosity;
     object-fit: cover; 
     transition: filter 0.5s cubic-bezier(0.23, 1, 0.32, 1), transform 0.5s cubic-bezier(0.23, 1, 0.32, 1); 
     filter: grayscale(100%); 
@@ -57,6 +56,7 @@ const isUpcoming = product.status === 'upcoming';
   .product-card:hover .product-image img { 
     filter: grayscale(0%); 
     transform: scale(1.03); 
+    mix-blend-mode: normal; 
   }
   .product-info { 
     padding: 1.5rem; 

@@ -38,7 +38,7 @@ if (limit) {
   <div class="product-grid">
     {products.map(product => (
       // FIXED: Correctly passes the accentType prop down to the ProductCard
-      <ProductCard product={product} accentType={listType === 'category' ? undefined : listType} />
+      <ProductCard product={product}  accentType={listType === 'category' ? undefined : listType} />
     ))}
   </div>
 </section>

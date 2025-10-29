@@ -1,8 +1,13 @@
 ---
+import OpiumHeader from "../components/OpiumHeader.astro";
+
+import OpiumFilter from "../components/OpiumFilter.astro";
 import OpiumList from "../components/OpiumList.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
+   <OpiumHeader />
+   <OpiumFilter activeFilter="unisex" />
    <OpiumList />
-</Layout>
+</Layout >

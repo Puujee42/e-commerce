@@ -1,0 +1,90 @@
+[
+  {
+    "id": "acc-jwl-001",
+    "name": "Chrome Cross Pendant",
+    "price": 90.00,
+    "category": "accessories",
+    "image": "/cross.webp",
+    "type": "jewelry",
+    "isNew": true,
+    "isTrending": true,
+    "description": "Solid .925 sterling silver pendant with a brutalist, gothic design. Hangs from a heavy 24-inch Cuban link chain. The centerpiece of the uniform."
+  },
+  {
+    "id": "acc-lth-001",
+    "name": "Spiked Leather Choker",
+    "price": 65.00,
+    "category": "accessories",
+    "image": "/choker.webp",
+    "type": "leather",
+    "isNew": false,
+    "isTrending": true,
+    "description": "Genuine grain leather choker with polished steel cone spikes and an adjustable buckle closure. Raw and refined, designed for the jugular."
+  },
+  {
+    "id": "acc-jwl-002",
+    "name": "Silver Armor Ring Set",
+    "price": 110.00,
+    "category": "accessories",
+    "image": "/ring.jpg",
+    "type": "jewelry",
+    "isNew": false,
+    "isTrending": true,
+    "description": "A set of three interlocking sterling silver rings designed to mimic gothic armor. Fully articulated for movement, covering the entire finger."
+  },
+  {
+    "id": "acc-lth-002",
+    "name": "Barbed Wire Leather Belt",
+    "price": 125.00,
+    "category": "accessories",
+    "image": "/belt.jpg",
+    "type": "leather",
+    "isNew": true,
+    "isTrending": false,
+    "description": "Thick-cut leather belt featuring a custom-molded barbed wire-style buckle in tarnished silver. An aggressive statement piece."
+  },
+  {
+    "id": "acc-hdw-001",
+    "name": "Distressed Sigil Cap",
+    "price": 75.00,
+    "category": "accessories",
+    "image": "/hat.webp",
+    "type": "headwear",
+    "isNew": true,
+    "isTrending": false,
+    "description": "Unstructured cotton twill cap, heavily distressed with frayed edges. Features a cryptic, embroidered sigil on the front panel."
+  },
+  {
+    "id": "acc-jwl-003",
+    "name": "Safety Pin Chain Earring",
+    "price": 70.00,
+    "category": "accessories",
+    "image": "/ear.png",
+    "type": "jewelry",
+    "isNew": false,
+    "isTrending": true,
+    "description": "A sterling silver safety pin connected by a fine link chain to a simple stud. A nod to punk heritage, refined. Sold as a single piece."
+  },
+  {
+    "id": "acc-lth-003",
+    "name": "Leather Utility Harness",
+    "price": 250.00,
+    "category": "accessories",
+    "image": "/tee.png",
+    "type": "leather",
+    "isNew": true,
+    "isTrending": false,
+    "description": "A full-body harness constructed from panels of soft leather and nylon webbing. Features multiple D-rings and a concealed zip pocket. Purely aesthetic, entirely essential."
+  },
+  {
+    "id": "acc-misc-001",
+    "name": "Monogram Knit Scarf",
+    "price": 140.00,
+    "category": "accessories",
+    "image": "/cross.webp",
+    "type": "misc",
+    "isNew": false,
+    "isTrending": false,
+    "description": "An oversized, heavyweight jacquard knit scarf. Features a deconstructed, repeating monogram pattern in black and off-white. Finished with thick tassels."
+  }
+]

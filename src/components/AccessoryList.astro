@@ -1,0 +1,63 @@
+---
+// src/components/AccessoryList.astro
+import allAccessories from '../data/accessory.json';
+import AccessoryCard from './AccessoryCard.astro';
+
+export interface Props {
+  filter?: 'jewelry' | 'leather' | 'headwear' | 'misc';
+  limit?: number;
+  title: string;
+}
+
+const { filter, limit, title } = Astro.props;
+let accessories = allAccessories;
+
+if (filter) {
+  accessories = accessories.filter(p => p.type === filter);
+}
+
+if (limit) {
+  accessories = accessories.slice(0, limit);
+}
+---
+
+<section class="accessory-list-section container">
+  <h2 class="section-title">{`// ${title} //`}</h2>
+  <div class="accessory-grid">
+    {accessories.map(product => (
+      <AccessoryCard product={product} />
+    ))}
+  </div>
+</section>
+
+<style>
+  .accessory-list-section {
+    padding: 6rem 0;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  .section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+  }
+  .section-title:hover {
+    color: var(--accent-primary);
+  }
+
+  /* The grid is a single column to emphasize the unique card layout */
+  .accessory-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 900px; /* Constrain width for catalog feel */
+    margin: 0 auto;
+    gap: 2rem;
+  }
+</style>
